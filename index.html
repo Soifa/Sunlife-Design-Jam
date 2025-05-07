@@ -5,6 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sun Life Design Jam | Sofia Xu Portfolio</title>
   <style>
+    :root {
+      --light-pink: #ffe8f2;
+      --soft-blue: #e3f3ff;
+      --light-lavender: #f2f0ff;
+      --accent: #dab6e7;
+      --text: #333;
+    }
     body {
       font-family: 'Segoe UI', sans-serif;
       background: linear-gradient(to bottom right, #ffffff, #f6f1fb);
@@ -14,15 +21,28 @@
       padding: 0;
     }
     header {
-      padding: 2rem 1rem;
-      text-align: center;
-      background: linear-gradient(to right, #f6f1fb, #ffe1f3);
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+      background: rgba(255, 255, 255, 0.9);
+      padding: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
     }
-    h1 {
-      font-size: 2.5rem;
-      color: #5e2ca5;
-      margin-bottom: 0.5rem;
+    header h1 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--text);
+      margin: 0;
+    }
+    nav a {
+      margin-left: 1rem;
+      color: #666;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+    nav a:hover {
+      color: var(--accent);
     }
     h2 {
       font-size: 1.8rem;
@@ -80,7 +100,9 @@
       font-size: 1.1rem;
       transition: background 0.3s ease;
     }
-    
+    .persona-container:hover span {
+      background: rgba(0, 0, 0, 0.8);
+    }
     .persona-container img {
       width: 100%;
       height: auto;
@@ -90,7 +112,10 @@
       cursor: pointer;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
-    
+    .persona-container img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    }
     .tools, .links {
       display: flex;
       justify-content: center;
@@ -107,11 +132,6 @@
       text-decoration: none;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
-    
-    .persona-container:hover span {
-      background: rgba(0, 0, 0, 0.8);
-    }
-    
     .links a:hover {
       background: linear-gradient(to right, #d9c9ff, #ffe1f3);
       color: #4e1b9a;
@@ -126,12 +146,6 @@
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       cursor: pointer;
     }
-    
-    .persona-container img:hover {
-      transform: scale(1.05);
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
-    }
-    
     .full-width-section img:hover {
       transform: scale(1.02);
       box-shadow: 0 4px 16px rgba(0,0,0,0.2);
@@ -140,8 +154,13 @@
 </head>
 <body>
   <header>
-    <h1>Sun Life Design Jam: Financial Literacy Made Fun</h1>
-    <p><strong>Design Sprint | 48 Hours | Team-Based</strong></p>
+    <h1>Sofia Xu</h1>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/#portfolio">Portfolio</a>
+      <a href="/#projects">Projects</a>
+      <a href="/#contact">Contact</a>
+    </nav>
   </header>
 
   <div class="container">
