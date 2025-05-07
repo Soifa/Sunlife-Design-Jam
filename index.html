@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sun Life Design Jam | Sofia Xu Portfolio</title>
   <style>
     body {
@@ -59,19 +59,38 @@
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
     }
     .persona-images {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
       gap: 2rem;
       margin-top: 2rem;
     }
-    .persona-images img {
-      width: auto;
-      max-width: 48%;
+    .persona-container {
+      position: relative;
+      overflow: hidden;
+    }
+    .persona-container span {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      color: #fff;
+      text-align: center;
+      padding: 0.5rem 0;
+      font-weight: bold;
+      font-size: 1.1rem;
+      transition: background 0.3s ease;
+    }
+    
+    .persona-container img {
+      width: 100%;
       height: auto;
+      object-fit: contain;
       border-radius: 12px;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
+    
     .tools, .links {
       display: flex;
       justify-content: center;
@@ -88,6 +107,11 @@
       text-decoration: none;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
+    
+    .persona-container:hover span {
+      background: rgba(0, 0, 0, 0.8);
+    }
+    
     .links a:hover {
       background: linear-gradient(to right, #d9c9ff, #ffe1f3);
       color: #4e1b9a;
@@ -99,6 +123,18 @@
       margin: 2rem auto;
       border-radius: 12px;
       box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+    
+    .persona-container img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    }
+    
+    .full-width-section img:hover {
+      transform: scale(1.02);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.2);
     }
   </style>
 </head>
@@ -139,19 +175,21 @@
 
   <div class="full-width-section">
     <h2>👥 User Personas</h2>
-    <p>We focused on two key personas to guide our user-centered design approach:</p>
-    <ul>
-      <li><strong>Maria:</strong> A 33-year-old software engineer who recently started her first job. She faces student debt, credit card challenges, and anxiety around financial management.</li>
-      <li><strong>Alex:</strong> A 24-year-old marketing intern just beginning his career. He is interested in investing but lacks foundational knowledge and feels overwhelmed by complex tools.</li>
-    </ul>
+    <p>We focused on two key personas to guide our user-centered design approach.</p>
     <div class="persona-images">
-      <img src="Persona.png" alt="Persona - Maria">
-      <img src="Persona 2.png" alt="Persona - Alex">
+      <div class="persona-container">
+        <img src="Persona.png" alt="Persona - Maria">
+        <span>Maria</span>
+      </div>
+      <div class="persona-container">
+        <img src="Persona 2.png" alt="Persona - Alex">
+        <span>Alex</span>
+      </div>
     </div>
   </div>
 
   <div class="full-width-section">
-    <h2>🎨 UX & Visual Design</h2>
+    <h2>🎨 UX &amp; Visual Design</h2>
     <h3>📌 Discovery Phase</h3>
     <p>We analyzed pain points, competitor apps, and blockers like fear and info overload. The EAST framework shaped our strategic direction.</p>
 
@@ -163,7 +201,7 @@
     <p>We created a polished app using a warm color palette, gamified tasks, and customizable pet companions.</p>
     <img src="sunlife-screen.png" alt="High Fidelity Screens">
 
-    <h3>🔁 Testing & Feedback</h3>
+    <h3>🔁 Testing &amp; Feedback</h3>
     <p>Users praised the approachable design and gamification. Feedback confirmed that the experience reduced stress around finances.</p>
   </div>
 
@@ -196,5 +234,37 @@
       </div>
     </div>
   </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      document.querySelectorAll("img").forEach(img => {
+        img.addEventListener("click", () => {
+          const modal = document.createElement("div");
+          modal.style.position = "fixed";
+          modal.style.top = 0;
+          modal.style.left = 0;
+          modal.style.width = "100vw";
+          modal.style.height = "100vh";
+          modal.style.backgroundColor = "rgba(0, 0, 0, 0.8)";
+          modal.style.display = "flex";
+          modal.style.justifyContent = "center";
+          modal.style.alignItems = "center";
+          modal.style.zIndex = 9999;
+          modal.style.cursor = "zoom-out";
+
+          const fullImg = document.createElement("img");
+          fullImg.src = img.src;
+          fullImg.style.maxWidth = "90vw";
+          fullImg.style.maxHeight = "90vh";
+          fullImg.style.borderRadius = "16px";
+          fullImg.style.boxShadow = "0 4px 24px rgba(0,0,0,0.3)";
+
+          modal.appendChild(fullImg);
+          modal.addEventListener("click", () => document.body.removeChild(modal));
+          document.body.appendChild(modal);
+        });
+      });
+    });
+  </script>
 </body>
 </html>
